@@ -43,17 +43,41 @@ function startup_reloaded_services() {
 		'has_archive'         => true,
 		'exclude_from_search' => true,
 		'publicly_queryable'  => true,
-		'capability_type'     => 'page'
+        'capability_type'     => array('service','services'),
+        'map_meta_cap'        => true
 	);
 	register_post_type( 'services', $args );
 
 }
 add_action( 'init', 'startup_reloaded_services', 0 );
 
-// Metaboxes
-add_action( 'cmb2_init', 'startup_reloaded_metabox_services' );
+// Capabilities
 
-function startup_reloaded_metabox_services() {
+register_activation_hook( __FILE__, 'startup_reloaded_services_caps' );
+
+function startup_reloaded_services_caps() {
+	
+	$role_admin = get_role( 'administrator' );
+	
+	$role_admin->add_cap( 'edit_service' );
+	$role_admin->add_cap( 'read_service' );
+	$role_admin->add_cap( 'delete_service' );
+	$role_admin->add_cap( 'edit_others_services' );
+	$role_admin->add_cap( 'publish_services' );
+	$role_admin->add_cap( 'edit_services' );
+	$role_admin->add_cap( 'read_private_services' );
+	$role_admin->add_cap( 'delete_services' );
+	$role_admin->add_cap( 'delete_private_services' );
+	$role_admin->add_cap( 'delete_published_services' );
+	$role_admin->add_cap( 'delete_others_services' );
+	$role_admin->add_cap( 'edit_private_services' );
+	$role_admin->add_cap( 'edit_published_services' );
+}
+
+// Metaboxes
+add_action( 'cmb2_init', 'startup_reloaded_services_meta' );
+
+function startup_reloaded_services_meta() {
     require get_template_directory() . '/inc/font-awesome.php';
     
 	// Start with an underscore to hide fields from custom fields list
