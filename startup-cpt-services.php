@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: StartUp Services Custom Post
-Description: Le plugin pour lactiver le Custom Post Services
+Description: Le plugin pour activer le Custom Post Services
 Author: Yann Caplain
-Version: 1
+Version: 1.0
 */
 
 //CPT
