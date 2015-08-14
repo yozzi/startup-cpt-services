@@ -8,7 +8,6 @@ Version: 1.0
 
 //CPT
 function startup_reloaded_services() {
-
 	$labels = array(
 		'name'                => _x( 'Services', 'Post Type General Name', 'text_domain' ),
 		'singular_name'       => _x( 'Service', 'Post Type Singular Name', 'text_domain' ),
@@ -49,16 +48,12 @@ function startup_reloaded_services() {
 	register_post_type( 'services', $args );
 
 }
+
 add_action( 'init', 'startup_reloaded_services', 0 );
 
 // Capabilities
-
-register_activation_hook( __FILE__, 'startup_reloaded_services_caps' );
-
 function startup_reloaded_services_caps() {
-	
 	$role_admin = get_role( 'administrator' );
-	
 	$role_admin->add_cap( 'edit_service' );
 	$role_admin->add_cap( 'read_service' );
 	$role_admin->add_cap( 'delete_service' );
@@ -74,9 +69,9 @@ function startup_reloaded_services_caps() {
 	$role_admin->add_cap( 'edit_published_services' );
 }
 
-// Metaboxes
-add_action( 'cmb2_init', 'startup_reloaded_services_meta' );
+register_activation_hook( __FILE__, 'startup_reloaded_services_caps' );
 
+// Metaboxes
 function startup_reloaded_services_meta() {
     require get_template_directory() . '/inc/font-awesome.php';
     
@@ -96,6 +91,8 @@ function startup_reloaded_services_meta() {
             'type'             => 'select',
             'show_option_none' => true,
             'options'          => $font_awesome
-        ) );
+    ) );
 }
+
+add_action( 'cmb2_init', 'startup_reloaded_services_meta' );
 ?>
