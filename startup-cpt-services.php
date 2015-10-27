@@ -126,7 +126,7 @@ function startup_reloaded_services_meta() {
     ) );
 }
 
-add_action( 'cmb2_init', 'startup_reloaded_services_meta' );
+add_action( 'cmb2_admin_init', 'startup_reloaded_services_meta' );
 
 // Shortcode
 add_shortcode( 'services', function( $atts, $content= null ){
