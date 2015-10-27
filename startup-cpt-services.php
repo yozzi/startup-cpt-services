@@ -127,4 +127,11 @@ function startup_reloaded_services_meta() {
 }
 
 add_action( 'cmb2_init', 'startup_reloaded_services_meta' );
+
+// Shortcode
+add_shortcode( 'services', function( $atts, $content= null ){
+    ob_start();
+    require get_template_directory() . '/inc/shortcodes/services.php';
+    return ob_get_clean();
+});
 ?>
