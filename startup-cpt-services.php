@@ -75,7 +75,7 @@ function startup_reloaded_services() {
 
 add_action( 'init', 'startup_reloaded_services', 0 );
 
-//Flusher les permalink à l'activation du plgin pour qu'ils fonctionnent sans mise à jour manuelle
+//Flusher les permalink à l'activation du plugin pour qu'ils fonctionnent sans mise à jour manuelle
 function startup_reloaded_services_rewrite_flush() {
     startup_reloaded_services();
     flush_rewrite_rules();
