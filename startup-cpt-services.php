@@ -1,9 +1,10 @@
 <?php
 /*
-Plugin Name: StartUp Services
+Plugin Name: StartUp CPT Services
 Description: Le plugin pour activer le Custom Post Services
 Author: Yann Caplain
 Version: 1.2.0
+Text Domain: startup-cpt-services
 */
 
 //GitHub Plugin Updater
