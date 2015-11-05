@@ -130,9 +130,17 @@ function startup_reloaded_services_meta() {
 add_action( 'cmb2_admin_init', 'startup_reloaded_services_meta' );
 
 // Shortcode
-add_shortcode( 'services', function( $atts, $content= null ){
-    ob_start();
-    require get_template_directory() . '/template-parts/content-services.php';
-    return ob_get_clean();
-});
+function startup_reloaded_services_shortcode( $atts ) {
+
+	// Attributes
+    $atts = shortcode_atts(array(
+            'bg' => '#f0f0f0'
+        ), $atts);
+    
+	// Code
+        ob_start();
+        require get_template_directory() . '/template-parts/content-services.php';
+        return ob_get_clean();    
+}
+add_shortcode( 'services', 'startup_reloaded_services_shortcode' );
 ?>
